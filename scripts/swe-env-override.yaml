@@ -1,0 +1,22 @@
+# Merged ON TOP of the builtin benchmarks/swebench.yaml (which supplies the tool-calling
+# agent and prompts). Overrides only what that config gets wrong for this run.
+#
+# environment: SWE-bench Pro images set ENTRYPOINT ["/bin/bash"], so the builtin launch
+#   docker run ... --rm <img> sleep 2h   ->   "/bin/bash sleep 2h"
+# exits instantly; every later exec returns "No such container" and the agent burns its
+# whole step budget against a dead container (LimitsExceeded, empty patch).
+environment:
+  run_args: ["--entrypoint", "", "--memory=12g"]
+
+# model: sampling is deliberately NOT set here. z.ai's DeepSWE/agentic-coding numbers
+# (temperature 0.95, top_p 1.0) are configured SERVER-side on the spark vLLM via
+#   --override-generation-config '{"temperature":0.95,"top_p":1.0}'
+# and verified to survive the litellm hop unchanged. Leaving them out here means the run
+# actually exercises that server-side default rather than masking it with client values.
+# reasoning_effort stays at the model default (max), which is what z.ai recommend for
+# benchmarks and what the server now allows since enable_thinking=true.
+# drop_params/parallel_tool_calls come from the builtin config and must survive the merge.
+model:
+  model_kwargs:
+    drop_params: true
+    parallel_tool_calls: true

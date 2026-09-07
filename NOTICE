@@ -1,0 +1,16 @@
+Qwen3.8-Flash-Next-FP8 on 2x DGX Spark (GB10) — serving playbook and benchmarks
+Copyright (c) 2026 Tom Sarihan, Desnet AI LLC
+
+Licensed under the Apache License, Version 2.0.
+
+This work builds on, and is measured against, the following third-party projects.
+All trademarks and model weights remain the property of their respective owners.
+
+  Qwen3.8-Flash-Next / -FP8    Qwen (Alibaba)
+  GLM-5.3-Flash                Z.ai / RedHatAI (NVFP4)   -- comparison baseline
+  Qwen3.8-27B                  Qwen (Alibaba)            -- comparison baseline
+  SWE-bench Pro                ScaleAI
+  mini-swe-agent               SWE-agent authors
+  vLLM                         vLLM project
+
+No model weights are redistributed in this repository. Scripts and results only.

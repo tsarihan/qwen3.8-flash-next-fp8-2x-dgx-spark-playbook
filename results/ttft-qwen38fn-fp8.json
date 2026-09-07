@@ -1,0 +1,32 @@
+{
+  "tag": "qwen38fn-fp8",
+  "model": "qwen3.8-flash-next-fp8",
+  "rows": [
+    {
+      "context_tokens": 4096,
+      "ttft_s": 3.395,
+      "total_s": 3.395,
+      "ok": true,
+      "prefill_tok_per_s": 1206.4
+    },
+    {
+      "context_tokens": 32768,
+      "ttft_s": 15.929,
+      "total_s": 15.929,
+      "ok": true,
+      "prefill_tok_per_s": 2057.1
+    },
+    {
+      "context_tokens": 131072,
+      "ttft_s": 50.598,
+      "total_s": 50.598,
+      "ok": true,
+      "prefill_tok_per_s": 2590.5
+    },
+    {
+      "context_tokens": 262144,
+      "ok": false,
+      "error": "<HTTPError 400: 'Bad Request'>"
+    }
+  ]
+}
